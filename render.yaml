@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: fastapi-breakout-alerts
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM
+        sync: false
+      - key: SMS_RECIPIENTS
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_RECIPIENTS
+        sync: false
+      - key: SCAN_INTERVAL_MINUTES
+        value: 15
+      - key: TICKERS
+        value: AAPL,MSFT,NVDA,AMD,TSLA
